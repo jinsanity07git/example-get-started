@@ -35,6 +35,14 @@ $ source .venv/bin/activate
 $ pip install -r src/requirements.txt
 ```
 
+```console
+-------windows cmd-----------
+python -m venv .env 
+.env\Scripts\activate.bat
+pip install dvc
+```
+
+
 > This instruction assumes that DVC is already installed, as it is frequently
 > used as a global tool like Git. If DVC is not installed, see the
 > [DVC installation guide](https://dvc.org/doc/install) on how to install DVC.
