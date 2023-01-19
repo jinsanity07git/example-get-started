@@ -34,6 +34,14 @@ $ virtualenv -p python3 .venv
 $ source .venv/bin/activate
 $ pip install -r src/requirements.txt
 ```
+### Get Started: Data Pipelines
+* https://dvc.org/doc/start/data-management/data-pipelines
+* https://dvc.org/doc/command-reference/stage/add
+```
+
+dvc stage add --force -n prepare -p prepare.seed,prepare.split  -d src/prepare.py -d data/data.xml -o data/prepared ^ python src/prepare.py data/data.xml
+
+```
 
 ```console
 -------windows cmd-----------

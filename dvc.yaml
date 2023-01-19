@@ -4,11 +4,11 @@ stages:
     deps:
     - data/data.xml
     - src/prepare.py
+    outs:
+    - data/prepared
     params:
     - prepare.seed
     - prepare.split
-    outs:
-    - data/prepared
   featurize:
     cmd: python src/featurization.py data/prepared data/features
     deps:
@@ -46,20 +46,20 @@ stages:
     - eval/live/metrics.json:
         cache: false
 plots:
-  - eval/importance.png
-  - Precision-Recall:
-      x: recall
-      y:
-        eval/prc/train.json: precision
-        eval/prc/test.json: precision
-  - ROC:
-      x: fpr
-      y:
-        eval/live/plots/sklearn/roc/train.json: tpr
-        eval/live/plots/sklearn/roc/test.json: tpr
-  - Confusion-Matrix:
-      template: confusion
-      x: actual
-      y:
-        eval/live/plots/sklearn/cm/train.json: predicted
-        eval/live/plots/sklearn/cm/test.json: predicted
+- eval/importance.png
+- Precision-Recall:
+    x: recall
+    y:
+      eval/prc/train.json: precision
+      eval/prc/test.json: precision
+- ROC:
+    x: fpr
+    y:
+      eval/live/plots/sklearn/roc/train.json: tpr
+      eval/live/plots/sklearn/roc/test.json: tpr
+- Confusion-Matrix:
+    template: confusion
+    x: actual
+    y:
+      eval/live/plots/sklearn/cm/train.json: predicted
+      eval/live/plots/sklearn/cm/test.json: predicted
