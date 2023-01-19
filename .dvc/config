@@ -1,6 +1,8 @@
 [core]
-    remote = storage
+    remote = myremote
 ['remote "storage"']
     url = s3://mybucket/dvcstore
 ['remote "local"']
     url = ../tmp/dvc-storage
+['remote "myremote"']
+    url = C:\Users\ZJin\AppData\Local\Temp\dvcstore
