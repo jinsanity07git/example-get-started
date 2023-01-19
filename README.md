@@ -40,6 +40,9 @@ $ pip install -r src/requirements.txt
 python -m venv .env 
 .env\Scripts\activate.bat
 pip install dvc
+
+## read cloud data using python api
+python src/py_api.py
 ```
 
 
