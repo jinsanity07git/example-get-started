@@ -1,4 +1,6 @@
 [core]
     remote = storage
 ['remote "storage"']
-    url = https://remote.dvc.org/get-started
+    url = s3://mybucket/dvcstore
+['remote "local"']
+    url = ../tmp/dvc-storage
