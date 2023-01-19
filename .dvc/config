@@ -6,3 +6,4 @@
     url = C:\Users\ZJin\AppData\Local\Temp\dvcstore
 ['remote "gstorage"']
     url = gdrive://1H03dusvF4pxmHq2EvpI7ppOCO2uNCz57
+    gdrive_acknowledge_abuse = true
