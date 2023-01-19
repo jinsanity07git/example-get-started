@@ -47,6 +47,12 @@ dvc stage add --force -n featurize -p featurize.max_features,featurize.ngrams -d
 dvc stage add --force -n train -p train.seed,train.n_est,train.min_split -d src/train.py -d data/features -o model.pkl ^ python src/train.py data/features model.pkl
 ```
 
+
+#### Get Started: Metrics, Parameters, and Plots
+```
+dvc stage add --force -n evaluate ^-d src/evaluate.py -d model.pkl -d data/features ^-o eval/importance.png -O eval/prc -O eval/live/plots ^-M eval/live/metrics.json ^python src/evaluate.py model.pkl data/features
+```
+
 ```console
 -------windows cmd-----------
 python -m venv .env 
