@@ -4,83 +4,83 @@ stages:
     cmd: python src/prepare.py data/data.xml
     deps:
     - path: data/data.xml
-      md5: 22a1a2931c8370d3aeedd7183606fd7f
-      size: 14445097
+      md5: 079fbd15fa2c32c539c4c4e3675b514a
+      size: 28890194
     - path: src/prepare.py
       md5: f09ea0c15980b43010257ccb9f0055e2
-      size: 1576
+      size: 1627
     params:
       params.yaml:
         prepare.seed: 20170428
         prepare.split: 0.2
     outs:
     - path: data/prepared
-      md5: 153aad06d376b6595932470e459ef42a.dir
-      size: 8437363
+      md5: 2fe72f304d64c28867d884e798568460.dir
+      size: 16894726
       nfiles: 2
   featurize:
     cmd: python src/featurization.py data/prepared data/features
     deps:
     - path: data/prepared
-      md5: 153aad06d376b6595932470e459ef42a.dir
-      size: 8437363
+      md5: 2fe72f304d64c28867d884e798568460.dir
+      size: 16894726
       nfiles: 2
     - path: src/featurization.py
       md5: e0265fc22f056a4b86d85c3056bc2894
-      size: 2490
+      size: 2570
     params:
       params.yaml:
         featurize.max_features: 200
         featurize.ngrams: 2
     outs:
     - path: data/features
-      md5: f35d4cc2c552ac959ae602162b8543f3.dir
-      size: 2232588
+      md5: 24776f4aaed10ce1bd6e6e91fd003d8c.dir
+      size: 4451098
       nfiles: 2
   train:
     cmd: python src/train.py data/features model.pkl
     deps:
     - path: data/features
-      md5: f35d4cc2c552ac959ae602162b8543f3.dir
-      size: 2232588
+      md5: 24776f4aaed10ce1bd6e6e91fd003d8c.dir
+      size: 4451098
       nfiles: 2
     - path: src/train.py
       md5: c3961d777cfbd7727f9fde4851896006
-      size: 967
+      size: 1006
     params:
       params.yaml:
         train.min_split: 0.01
-        train.n_est: 50
+        train.n_est: 100
         train.seed: 20170428
     outs:
     - path: model.pkl
-      md5: 337ac29ca551ff78f9df8d1e06bacef8
-      size: 1763779
+      md5: e9d2b89e22ef99be7203b67cd3f43be3
+      size: 4098361
   evaluate:
     cmd: python src/evaluate.py model.pkl data/features
     deps:
     - path: data/features
-      md5: f35d4cc2c552ac959ae602162b8543f3.dir
-      size: 2232588
+      md5: 24776f4aaed10ce1bd6e6e91fd003d8c.dir
+      size: 4451098
       nfiles: 2
     - path: model.pkl
-      md5: 337ac29ca551ff78f9df8d1e06bacef8
-      size: 1763779
+      md5: e9d2b89e22ef99be7203b67cd3f43be3
+      size: 4098361
     - path: src/evaluate.py
       md5: 753016f1791db6fe6808a9ff50002615
-      size: 3289
+      size: 3390
     outs:
     - path: eval/importance.png
-      md5: e314a9456824e8ccd43317538a24e1b4
-      size: 34065
+      md5: 65dfdf97935287c0bc52498f71adf4b7
+      size: 32894
     - path: eval/live/metrics.json
-      md5: 97147dd5cb0e159c34152950b0bf1309
-      size: 195
+      md5: 348e3afbee8510756dab6803d0ed0bfa
+      size: 204
     - path: eval/live/plots
-      md5: 88dd38d87a332e3a4637f19a2ec24b65.dir
-      size: 747249
+      md5: 09559722482e5c5d4025e9785629d473.dir
+      size: 2125529
       nfiles: 4
     - path: eval/prc
-      md5: 7a7fc103272b4a0a27020ca0ad42eacf.dir
-      size: 297862
+      md5: b9a0ec214ac09d9dcc217b2b41086384.dir
+      size: 286258
       nfiles: 2
